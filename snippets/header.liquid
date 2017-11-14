@@ -1,0 +1,61 @@
+<div id="notifications">
+	<h3>Test</h3>
+</div>
+
+<div id="menu">
+	<div class="container">
+		<nav class="desktop-wrapper">
+			<div class="logo"><a href="{{shop.url}}"></a></div>
+			<ul>
+				{% for link in linklists.main-menu.links %}<li><a {% if link.active %} class="active"{% endif %} href="{{link.url}}" >{{link.title}}</a></li>{% endfor %}
+			</ul>
+			<div class="buy">
+				<a class="btn buy-btn" href="{{settings.buy_btn_url}}">Purchase</a>
+			</div>
+		</nav>
+
+		<nav class="mobile-wrapper">
+			<div class="logo"></a></div>
+			<div class="links-wrapper">
+				<ul>
+					{% for link in linklists.main-menu.links %}<li><a {% if link.active %} class="active"{% endif %} href="{{link.url}}" >{{link.title}}</a></li>{% endfor %}
+					<li><a class="btn buy-btn" href="{{settings.buy_btn_url}}">Buy Now</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="lines">
+			<div class="line line-1"></div>
+			<div class="line line-2"></div>
+			<div class="line line-3"></div>
+		</div>
+	</div>
+</div>
+
+
+{% comment %}<div id="menu">
+	<div class="container">
+		<div class="logo">
+			<h1>MINDJOB</h1>
+		</div>
+		<nav role="nav">
+			<ul>
+				{% for link in linklists.main-menu.links %}
+				<li><a {% if link.active %} class="active"{% endif %} href="{{link.url}}" >{{link.title}}</a></li>
+				{% endfor %}
+				<li><a class="btn buy-btn" href="{{settings.buy_btn_url}}">Purchase</a></li>
+			</ul>
+		</nav>
+		<span class="mobile-trigger"><i class="fa fa-bars" aria-hidden="true"></i></span>
+	</div>
+
+	<nav class="mobile" role="nav">
+		<ul>
+			{% for link in linklists.main-menu.links %}
+			<li><a {% if link.active %} class="active"{% endif %} href="{{link.url}}" >{{link.title}}</a></li>
+			{% endfor %}
+			<li><a class="btn buy-btn" href="{{settings.buy_btn_url}}">Buy Now</a></li>
+		</ul>
+	</nav>
+
+</div>{% endcomment %}

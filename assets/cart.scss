@@ -1,0 +1,75 @@
+.cart-page#wall-of-shame{
+  .row{
+    overflow: auto;
+  }
+  .table{
+    .header{
+      td,
+      th{
+        text-align: center;
+      }
+    }
+    .cart__image{
+      display: block;
+      text-align: center;
+      img{
+        display: block;
+        margin: auto;
+      }
+    }
+    .cart__quantity-selector{
+      padding: 10px;
+      width: 70px;
+      height: 44px;
+      margin: auto;
+      display: block;
+      text-align: center;
+    }
+    .cart__image{
+
+    }
+    tbody{
+      td.text-right:last-of-type{
+        text-align: right;
+        font-weight: bold;
+      }
+    }
+    .btn.update-cart{
+      color: white;
+         background: black;
+         border-color: black;
+             font-family: "bebas_neue_regularregular", Helevetica;
+             font-size: 1.25em;
+             display: inline-block;
+             margin: 0 8px 0 0;
+         }
+
+
+    .cart__additional_checkout{
+      margin-top: 20px;
+    }
+  }
+  .text-left{
+    text-align: left;
+  }
+  .text-center{
+    text-align:center;
+  }
+  .text-right{
+    text-align: right;
+  }
+  .cart__note{
+    labe{
+      display: block;
+      margin-top: 10px;
+
+    }
+    textarea{
+      margin-top: 15px;
+      display: block;
+      width: 100%;
+      min-height: 60px;
+    }
+  }
+
+}

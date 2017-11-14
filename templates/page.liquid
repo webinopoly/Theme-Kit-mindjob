@@ -1,0 +1,213 @@
+{% if page.handle == 'drinkingrules' %}
+
+
+	<!--
+	**************
+	DRINKING RULES
+	**************
+	-->
+
+
+	{% assign content = page.content | split: '<!--snippet-->' %}
+
+	{{content[0]}}
+
+	{% for a in blogs.drinking-rules.articles reversed %}
+		{% assign handle = a.title | handleize  %}
+		<section class="holder">
+			<div class="card-vert flip">
+				<figure class="front">
+					{% include 'rule-box' section: handle %}
+					<h3>{{a.title}}</h3>
+				</figure>
+
+				<figure class="back">
+					{% include 'rule-box' section: handle %}
+					<span class="back-words">
+						<h3>{{a.title}}</h3>
+						<p>{{a.content}}</p>
+					</span>
+
+
+				</figure>
+			</div>
+		</section>
+
+	{% endfor %}
+
+	{{content[1]}}
+
+
+
+
+{% elsif page.handle == 'optionalrules' %}
+
+	<!--
+	**************
+	OPTIONAL RULES
+	**************
+	-->
+
+
+	{% assign content = page.content | split: '<!--snippet-->' %}
+
+	{{content[0]}}
+
+	{% for a in blogs.optional-rules.articles reversed %}
+		{% assign handle = a.title | handleize  %}
+
+		<section class="holder">
+		  <div class="card-vert flip">
+		    <figure class="front">
+		    	{% include 'rule-box' section: handle %}
+		    	<h3>{{a.title}}</h3>
+		    </figure>
+
+		    <figure class="back">
+		    	{% include 'rule-box' section: handle %}
+				<span class="back-words">
+					<h3>{{a.title}}</h3>
+		    		<p>{{a.content}}</p>
+				</span>
+		    </figure>
+		  </div>
+		</section>
+
+	{% endfor %}
+
+	<section class="holder submit-your-own">
+		<div class="card-vert">
+			<div class="front">
+				<a class="open-form" href="#submit"><h1>SUBMIT<br>YOUR<br>OWN</h1></a>
+			</div>
+
+			<div id="submit" class="modal mfp-hide">
+				<section>
+					<header>
+						<h2>SUBMIT A RULE</h2>
+						<h3>Tell us how you like it.</h3>
+					</header>
+					{% include 'submit-card-form' %}
+				</section>
+			</div>
+		</div>
+	</section>
+
+	{{content[1]}}
+
+	{% for a in blogs.top-submissions.articles reversed %}
+		{% assign handle = a.title | handleize  %}
+
+		<section class="holder">
+			<div class="card-vert flip">
+				<figure class="front">
+					{% include 'rule-box' section: handle %}
+					<h3>{{a.title}}</h3>
+				</figure>
+
+				<figure class="back">
+					{% include 'rule-box' section: handle %}
+					<h3>{{a.title}}</h3>
+					<p>{{a.content}}</p>
+				</figure>
+			</div>
+		</section>
+	{% endfor %}
+
+	{{content[2]}}
+
+
+
+{% elsif page.handle == 'faq-1' %}
+
+
+	<!--
+	***********
+	FAQ FAQ FAQ
+	***********
+	-->
+
+
+	{% assign content = page.content | split: '<!--snippet-->' %}
+
+	{{content[0]}}
+
+	{% for a in blogs.faq.articles reversed %}
+		{% assign handle = a.title | handleize  %}
+
+		<div class="holder">
+			<div class="q"><p>{{a.title}}</p></div>
+			<div class="a">{{a.content}}</div>
+		</div>
+
+	{% endfor %}
+
+	{{content[1]}}
+
+
+
+
+{% elsif page.handle == 'wallofshame' %}
+
+	<!--
+	*************
+	WALL OF SHAME
+	*************
+	-->
+
+
+	{% assign content = page.content | split: '<!--snippet-->' %}
+
+	{{content[0]}}
+
+
+	{% for a in blogs.wall-of-shame.articles reversed %}
+		{% assign handle = a.title | handleize  %}
+
+		<div class="holder">
+			<div>{{a.title}}</div>
+			<div>{{a.content}}</div>
+		</div>
+
+	{% endfor %}
+
+
+	{{content[1]}}
+
+	<div id="fess-up" class="modal mfp-hide">
+		<section>
+			<header>
+				<h2>SHAMED</h2>
+			</header>
+
+			<form id="fess-up-submission" target="_self" onsubmit="" action="">
+				<div class="form-row">
+					<input type="text" name="name" id="name" placeholder="Offender's Name*" required>
+				</div>
+
+				<div class="form-row">
+					<input type="text" name="beverage" id="beverage" placeholder="Beverage">
+					<input type="text" name="location" id="location" placeholder="Location">
+				</div>
+
+				<textarea id="situation" placeholder="Offending Situation"></textarea>
+				<input type="hidden" name="email" id="email" placeholder="Your Email" Value="email@example.com">
+				<div class="g-recaptcha" data-sitekey="6LfzbScTAAAAAA­-ZvbXwfMFdKeAnUgV1TzU3NGq4"></div>
+				<input class="btn" id="send" type="submit" value="submit">
+			</form>
+
+		</section>
+	</div>
+
+
+{% else %}
+
+	<!--
+	***************
+	ALL OTHER PAGES
+	***************
+	-->
+
+	{{page.content}}
+
+{% endif %}

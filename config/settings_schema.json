@@ -1,0 +1,243 @@
+[
+  {
+    "name": "theme_info",
+    "logo": "https:\/\/cdn.shopify.com\/s\/global\/branding\/shopify_logo_256x256.png",
+    "settings": [
+      {
+        "type": "header",
+        "content": "MINDJOB 2016"
+      }
+    ]
+  },
+  {
+    "name": "Default Values",
+    "settings": [
+      {
+        "type": "text",
+        "id": "buy_btn_url",
+        "label": "Buy Button URL",
+        "default": "https:\/\/www.mindjobgame.com\/cart\/202442735636:1"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "brand_dark",
+        "label": "Dark Background Base Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "light_section_header_color",
+        "label": "Light Background Header Color",
+        "default": "#542579"
+      },
+      {
+        "type": "color",
+        "id": "dark_section_header_color",
+        "label": "Dark Background Header Color",
+        "default": "#FED003"
+      },
+      {
+        "type": "color",
+        "id": "nsfw_section_header_color",
+        "label": "NSWF Rules Header Color",
+        "default": "#002855"
+      },
+      {
+        "type": "color",
+        "id": "drinking_section_header_color",
+        "label": "Drinking Rules Header Color",
+        "default": "#A20000"
+      },
+      {
+        "type": "color",
+        "id": "drinking2_section_header_color",
+        "label": "Drinking Rules Header Color (Optional Rules)",
+        "default": "#A20000"
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "facebook_url",
+        "label": "URL",
+        "default": "https:\/\/www.facebook.com\/yourURL\/"
+      },
+      {
+        "type": "image",
+        "id": "social-fb.png",
+        "label": "Icon",
+        "info": "png"
+      },
+      {
+        "type": "header",
+        "content": "Twitter"
+      },
+      {
+        "type": "text",
+        "id": "twitter_url",
+        "label": "Twitter",
+        "default": "https:\/\/www.twitter.com\/yourURL\/"
+      },
+      {
+        "type": "image",
+        "id": "social-twitter.png",
+        "label": "Icon",
+        "info": "png"
+      },
+      {
+        "type": "header",
+        "content": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Instagram",
+        "default": "https:\/\/www.instagram.com\/yourURL\/"
+      },
+      {
+        "type": "image",
+        "id": "social-instagram.png",
+        "label": "Icon",
+        "info": "png"
+      },
+      {
+        "type": "header",
+        "content": "Pinterest"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_url",
+        "label": "Pinterest",
+        "default": "https:\/\/www.pinterest.com\/yourURL\/"
+      },
+      {
+        "type": "image",
+        "id": "social-pinterest.png",
+        "label": "Icon",
+        "info": "png"
+      },
+      {
+        "type": "header",
+        "content": "Google"
+      },
+      {
+        "type": "text",
+        "id": "google_url",
+        "label": "Google",
+        "default": "https:\/\/www.google.com\/yourURL\/"
+      },
+      {
+        "type": "image",
+        "id": "social-google.png",
+        "label": "Icon",
+        "info": "png"
+      },
+      {
+        "type": "header",
+        "content": "Reddit"
+      },
+      {
+        "type": "text",
+        "id": "reddit_url",
+        "label": "Reddit",
+        "default": "https:\/\/www.reddit.com\/yourURL\/"
+      },
+      {
+        "type": "image",
+        "id": "social-reddit.png",
+        "label": "Icon",
+        "info": "png"
+      },
+      {
+        "type": "header",
+        "content": "Stumbleupon"
+      },
+      {
+        "type": "text",
+        "id": "stumbleupon_url",
+        "label": "stumbleupon",
+        "default": "https:\/\/www.stumbleupon.com\/yourURL\/"
+      },
+      {
+        "type": "image",
+        "id": "social-su.png",
+        "label": "Icon",
+        "info": "png"
+      }
+    ]
+  },
+  {
+    "name": "Mailchimp Settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mail_form_post_url",
+        "label": "POST URL",
+        "info": "i.e. http:\/\/company.us13.list-manage.com\/subscribe\/post-json"
+      },
+      {
+        "type": "text",
+        "id": "mailing_list_id",
+        "label": "Main List Id",
+        "info": "i.e. fd0c707a7d"
+      },
+      {
+        "type": "text",
+        "id": "submission_list_id",
+        "label": "Submission List Id",
+        "info": "i.e. 834b236eac"
+      },
+      {
+        "type": "text",
+        "id": "mailchimp_user_id",
+        "label": "User Id",
+        "info": "i.e. 1a463054a5823c402f5c28c6c"
+      }
+    ]
+  },
+  {
+    "name": "Quote Slider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "quotes_autoplay",
+        "label": "Autoplay?",
+        "default": "true",
+        "info": "true\/false"
+      },
+      {
+        "type": "text",
+        "id": "quotes_autoplay_speed",
+        "label": "Slide Duration",
+        "default": "2000",
+        "info": "1000 = 1 second"
+      },
+      {
+        "type": "text",
+        "id": "quotes_fade_speed",
+        "label": "Fade Speed",
+        "default": "3000",
+        "info": "1000 = 1 second"
+      },
+      {
+        "type": "text",
+        "id": "quotes_css_transition",
+        "label": "Transition Type",
+        "default": "linear",
+        "info": "CSS3 Animation Easing"
+      }
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--Google Websmaster Tools / Search Console verification meta tag (DM) ======== -->
+	<meta name="google-site-verification" content="4GSsqz_0Pw3ErY68rPGMZSifGpmUxE-bTblMJz7cnRM" />
+
+	<!--Hide cached versions of website from showing up in search results =========== -->
+	<meta name="robots" content="noarchive">
+
+	<!-- Title and description ================================================== -->
+	<title>
+	{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+	</title>
+
+	{% if page_description %}
+	<meta name="description" content="{{ page_description | escape }}">
+	{% endif %}
+
+	<!-- Social meta ================================================== -->
+	{% include 'social-meta-tags' %}
+
+  	<!-- Favicon ================================================== -->
+  	<link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+
+  	<!-- Pinterest ================================================== -->
+	<meta name="p:domain_verify" content="bef4f5c9b5307b452a413f36dca507ca"/>
+
+	<!-- Helpers ================================================== -->
+	<link rel="canonical" href="{{ canonical_url }}">
+
+	{{ "cart.scss.css"  | asset_url | stylesheet_tag }}
+	{{ "product.scss.css"  | asset_url | stylesheet_tag }}
+	{{ "_bundle.scss.css"  | asset_url | stylesheet_tag }}
+	{{ "_theme_settings.scss.css"  | asset_url | stylesheet_tag }}
+	{{ "_fonts.css"  | asset_url | stylesheet_tag }}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	{{ 'modernizr.min.js' | asset_url | script_tag }}
+	{{ "_scripts.js"  | asset_url | script_tag }}
+	{{ "_scripts-liquid.js"  | asset_url | script_tag }}
+	{{content_for_header}}
+</head>
+<body>
+
+	<div id="ip-check">
+		{% comment %}{{ 'mindjob-black.svg' | asset_url | img_tag }}{% endcomment %}
+	</div>
+
+	{% include 'header' %}
+	{{content_for_layout}}
+	{% include 'footer' %}
+</body>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700" rel="stylesheet">
+</html>

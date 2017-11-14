@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'violenceraw';
+  	src: url("{{ 'violence-webfont.woff2' | asset_url }}") format('woff2'),
+         url('violence-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bebas_neue_regularregular';
+    src: url('bebasneue_regular-webfont.woff2') format('woff2'),
+         url('bebasneue_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'browallia';
+    src: url('browab_0.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

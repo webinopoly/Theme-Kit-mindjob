@@ -1,0 +1,39 @@
+<section id="footer">
+	<footer>
+		<div class="row">
+			<div class="logo">
+				<a href="{{shop.url}}"></a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div id="links">
+				<nav role="nav">
+					<ul>
+						{% for link in linklists.footercolumn1.links %}
+						<li><a {% if link.active %} class="active"{% endif %} href="{{link.url}}" >{{link.title}}</a></li>
+						{% endfor %}
+					</ul>
+					<ul>
+						{% for link in linklists.footercolumn2.links %}
+						<li><a {% if link.active %} class="active"{% endif %} href="{{link.url}}" >{{link.title}}</a></li>
+						{% endfor %}
+					</ul>
+				</nav>
+			</div>
+
+			<div id="social">
+				<div id="profiles">
+					<p>Get The Connect</p>
+					{% include 'social-links' %}
+				</div>
+
+				<div id="subscribe">
+					<p>Stay In The Know</p>
+					{% include 'email-form' %}
+				</div>
+			</div>
+		</div>
+		<p class="copyright">&copy; 2016 Rockpool Ventures. All Rights Reserved.</p>
+	</footer>
+</section>

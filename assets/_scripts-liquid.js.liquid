@@ -1,0 +1,56 @@
+$(document).ready(function(){
+
+	var topBar = $('#notifications');
+	topBar.hide();
+
+	var loading = function() {
+		topBar.find('h3').html('sending...')
+		topBar.slideDown();
+	}
+
+	var dropNotification = function(x) {
+		topBar.find('h3').html(x)
+		topBar.delay(5000).fadeOut(100);
+	}
+
+	
+
+	$('form#email-signup').on('submit', function(e){
+		e.preventDefault();
+		loading();
+		$.ajax({
+			type: 'GET',
+			url: '{{settings.mail_form_post_url}}?u={{settings.mailchimp_user_id}}&amp;id={{settings.mailing_list_id}}&c=?',
+			data: $(this).serialize(),
+			dataType: 'json',
+			contentType: "application/json; charset=utf-8",
+			error: function(err) {
+				console.log(err);
+			},
+			success: function(data) {
+				console.log(data);
+	            if (data.result != "success") {
+            		if(data.msg.indexOf('0 - Please enter a value') != -1){
+            			dropNotification("Email can't be blank");
+            		} else if(data.msg.indexOf('already subscribed') != 1) {
+            			dropNotification("Looks like you're on this list already.");
+            		} 
+	            } else {
+	            	dropNotification("Success! Check your inbox to confirm.")
+	            	$('input[type=email]').val('');
+	            }
+			}
+		});
+	});
+
+	//QUOTES
+	$('#quotes').slick({
+		autoplay: '{{settings.quotes_autoplay}}',
+		autoplaySpeed: '{{settings.quotes_autoplay_speed}}',
+		arrows: false,
+		fade: true,
+		speed: '{{settings.quotes_fade_speed}}',
+		cssEase: '{{settings.quotes_css_transition}}'
+	});
+
+});

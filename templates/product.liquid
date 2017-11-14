@@ -1,0 +1,185 @@
+<div class="p-container">
+
+
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'large--one-third medium--one-half' %}
+{% endunless %}
+
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% comment %}
+  Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+<section id="own-it">
+	<header>
+		<h2>{{ product.title }}</h2>
+	</header>
+	<div class="row">
+		<div class="deck">
+				<img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+
+
+
+        <div class="flagList">
+      		<ul>
+      			<li>
+      				{{ 'us' | append: '-flag.png' | file_url  | img_tag:"","flag" }}
+      			</li>
+      			{% for tag in product.tags %}
+      		  	{% if tag contains 'lang:' %}
+      		    	{% assign my_youtube_code = tag | split:':' %}
+      		    	<li>{{ my_youtube_code[1]  |  downcase | append: '-flag.png' | file_url  | img_tag:"","flag" }}</li>
+      		  	{% endif %}
+      			{% endfor %}
+      		</ul>
+        </div>
+
+
+
+
+		    </div>
+			<div class="bullets">
+			<h3>the original fine cut version</h3>
+			<ul>
+      	<li>- Unleash profanity on your friends</li>
+				<li>- Conquer the psychology of swearing</li>
+				<li>- Punish the mistakes of others</li>
+				<li>- Raise the stakes with optional drinking rules</li>
+				<li>- Ages 18+ | 85 Cards | 2-8 Players</li>
+			</ul>
+
+			<div class="buy-learn">
+				<form  action="/cart/add" method="post" class="variants clearfix" id="cart-form-{{ product.id }}">
+				<span class="btn price"> {% comment %}
+      You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+      if your variants have different prices.
+    {% endcomment %}
+    {% if on_sale %}
+      {% if product.price_varies %}
+        {% assign sale_price = product.price | money %}
+        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+      {% else %}
+        <strong>{{ 'products.product.on_sale' | t }}</strong>
+        {{ product.price | money }}
+      {% endif %}
+    {% else %}
+      {% if product.price_varies %}
+        {% assign price = product.price | money %}
+        {{ 'products.general.from_text_html' | t: price: price }}
+      {% else %}
+        {{ product.price | money }}
+      {% endif %}
+    {% endif %}
+    {% if sold_out %}
+      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+    {% endif %}
+
+    {% if on_sale %}
+      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+      <br><s>{{ product.compare_at_price | money }}</s>
+    {% endif %}
+	</span>
+
+    {% if product.available %}
+      <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+
+      <button id="target0" type="submit" class="btn buy-btn active" value="BUY NOW">BUY NOW</button>
+
+			{% for tag in product.tags %}
+				{% if tag contains 'lang:' %}
+					{% assign my_youtube_code = tag | split:':' %}
+					<a id="target{{ forloop.index }}" href="//{{ my_youtube_code[2] }}" class="btn buy-btn">{{ my_youtube_code[2] | remove: 'www.' | capitalize }}</a>
+				{% endif %}
+			{% endfor %}
+
+    {% else %}
+	  <span class="btn buy-btn sold_icon">Sold out</span>
+    {% endif %}
+	</form>
+
+	{% for tag in product.tags %}
+		{% if tag contains 'lang:' %}
+			{% assign my_youtube_code = tag | split:':' %}
+			{% assign countryName = my_youtube_code[1] %}
+
+			<p class="availableOn">Available in {{ countryName }} on <a href="//{{ my_youtube_code[2] }}" class="availableOn">{{ my_youtube_code[2] | remove: 'www.' | capitalize }}</a></p>
+		{% endif %}
+	{% endfor %}
+
+
+
+
+	</div>
+	</div>
+	</div>
+
+
+	<!-- Video code -->
+	{% assign pTitle = product.title | handilze |  downcase %}
+	<div class="langThumbs">
+		<ul>
+			<li data-links="#target0" class="active">
+				{{ 'us' | append: '-flag.png' | file_url  | img_tag:"","flag" }}
+				<span>US Version</span>
+				{{ 'us' | append: "-" | append: pTitle | append: '.png' | file_url  | img_tag:"","pImg" }}
+
+			</li>
+			{% for tag in product.tags %}
+		  	{% if tag contains 'lang:' %}
+		    	{% assign my_youtube_code = tag | split:':' %}
+		    	<li data-links="#target{{ forloop.index }}">{{ my_youtube_code[1]  |  downcase | append: '-flag.png' | file_url  | img_tag:"","flag" }}<span>{{ my_youtube_code[1] }} Version</span>{{ my_youtube_code[1] |  downcase | append: "-" | append: pTitle | append: '.png' | file_url | img_tag:"","pImg"  }}
+					</li>
+		  	{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+</div>
+<script>
+$('.p-container .buy-learn .btn.buy-btn:not(.active)').hide();
+jQuery(function(jQuery) {
+  jQuery('.langThumbs li').click(function() {
+  var jQuerytarget = jQuery(this).attr('data-links'),
+      jQueryother = jQuery(jQuerytarget).siblings('.active');
+      jQuery('.buy-learn .btn.buy-btn').removeClass("active").hide();
+      //jQuery(jQuerytarget).removeClass('active').hide();
+      jQuery(this).siblings('li').removeClass("active");
+      jQuery(this).addClass("active");
+      jQuery(jQuerytarget).addClass('active').show();
+
+      if(jQuerytarget == '#target0'){
+        $('#own-it .buy-learn span.price.btn').text('$19.95');
+      } else if((jQuerytarget) == '#target1'){
+        $('#own-it .buy-learn span.price.btn').text('EUR 19.95');
+      } else if((jQuerytarget) == '#target2'){
+        $('#own-it .buy-learn span.price.btn').text('$19.95');
+      } else if((jQuerytarget) == '#target3'){
+        $('#own-it .buy-learn span.price.btn').text('£19.95');
+      }
+      // } else {
+      //   alert('No');
+      //   //$('#own-it .buy-learn span.price.btn').text('EUR 19.95');
+      // }
+
+
+    });
+});
+
+
+
+
+</script>

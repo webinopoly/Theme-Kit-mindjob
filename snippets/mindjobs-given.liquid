@@ -1,0 +1,20 @@
+<section id="mindjobs-given" class="dark">
+	<header>
+		<h2>Thousands of #MINDJOBS given</h2>
+	</header>
+	
+	<div class="slider-holder">
+		<div id="slider" class="row">
+		{% for article in blogs.mindjobs-given.articles %}
+			<div><img src="{{article.image | img_url: "grande"}}"></div>
+		{% endfor %}
+		</div>
+		<div class="slider-nav"></div>
+	</div>
+	
+	
+
+	<div id="quotes" class="row">
+		{{pages.quotes.content}}
+	</div>
+</section>
