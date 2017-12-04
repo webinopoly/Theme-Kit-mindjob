@@ -1,0 +1,215 @@
+{%- assign product = all_products[section.settings.product] -%}
+<div class="p-container">
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'large--one-third medium--one-half' %}
+{% endunless %}
+
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% comment %}
+  Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+<section id="own-it">
+	<header>
+		<h2>MINDSHOP</h2>
+	</header>
+
+
+<div class="row midjob">
+
+
+  	<!-- Video code -->
+{% if section.blocks.size > 1 %}
+    <div class="langThumbs">
+      <ul>
+        {% for block in section.blocks %}
+          <li data-links="{{ block.settings.language  | downcase }}"{% if forloop.index == 1 %} class="active"{% endif %}>
+            {{ block.settings.language | downcase | append: '-flag.png' | file_url  | img_tag:"","flag"}}
+            <span>{{ block.settings.language }} Version</span>
+          </li>
+      {% endfor%}
+    </ul>
+  </div>
+{% endif %}
+
+
+    {% for block in section.blocks %}
+    {%- assign product = all_products[block.settings.product] -%}
+    {%- assign lang = block.settings.language | downcase -%}
+
+	   <div id="row-id-{{ lang }}" lang="{{ lang }}" class="row productTab-row{% if forloop.index == 1 %} active{% endif %}"{% if forloop.index > 1 %} style="display: none;"{% endif %}>
+       <div class="product-photo-container" id="productPhoto">
+      <div class="sliderWrap">
+      <ul id="productPhotoSlider" class="productPhotoSlider {% if product.images.size > 1 %}isSlider{% endif %}">
+        {% for image in product.images %}
+        <li class="image-thumbs{% if forloop.index > 1 %} hide{% endif %}" id="{{ image.alt | escape | downcase }}"><img class="thumbImg" src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}"></li>
+        {% endfor %}
+      </ul>
+      <div class="slider-nav"></div>
+    </div>
+		    </div>
+			<div class="bullets">
+
+	     {{ product.description }}
+
+			<div class="buy-learn">
+				<form  action="/cart/add" method="post" class="variants clearfix" id="cart-form-{{ product.id }}">
+				<span class="btn price">
+          {% comment %}
+      You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+      if your variants have different prices.
+    {% endcomment %}
+    {% if on_sale %}
+      {% if product.price_varies %}
+        {% assign sale_price = product.price | money_with_currency %}
+        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+      {% else %}
+        <strong>{{ 'products.product.on_sale' | t }}</strong>
+        {{ product.price | money_with_currency }}
+      {% endif %}
+    {% else %}
+      {% if product.price_varies %}
+        {% assign price = product.price | money_with_currency %}
+        {{ 'products.general.from_text_html' | t: price: price }}
+      {% else %}
+        {{ product.price | money_with_currency }}
+      {% endif %}
+    {% endif %}
+    {% if sold_out %}
+      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+    {% endif %}
+
+    {% if on_sale %}
+      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+      <br><s>{{ product.compare_at_price | money_with_currency }}</s>
+    {% endif %}
+	   </span>
+     <div class="quantityBtn btn">
+       <label>Decks</label>
+       <input type="text" id="Quantity" name="quantity" value="1" min="1" class=" product-form__input" pattern="[0-9]*">
+     </div>
+    {% if product.available %}
+      <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+      <button id="lang-us" type="submit" class="btn buy-btn active" value="BUY NOW">add to cart</button>
+    {% else %}
+      <span class="btn buy-btn sold_icon">Sold out</span>
+    {% endif %}
+
+     {% comment %}
+      {% if product.available %}
+      <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+      {% unless block.settings.cartLink %}
+      <button id="lang-us" type="submit" class="btn buy-btn active" value="BUY NOW">BUY NOW</button>
+      {% else %}
+      <a href="{{ block.settings.cartLink }}" class="btn buy-btn">{{ block.settings.cartLabel }}</a>
+      {% endunless %}
+
+    {% else %}
+	  <span class="btn buy-btn sold_icon">Sold out</span>
+    {% endif %}
+    {% endcomment %}
+
+
+	</form>
+  <div class="availableOn">
+    {{ block.settings.alrtLink1 }}
+    {{ block.settings.alrtLink2 }}
+  </div>
+	</div>
+
+	</div>
+	</div>
+
+  {% endfor %}
+</div>
+
+  <p class="text-center"><a href="/" class="btn btnHome">Home</a></p>
+
+</section>
+</div>
+{% schema %}
+  {
+    "name": "Product list",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "MINDJOB"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "text",
+            "id": "language",
+            "label": "Language",
+            "default": "US"
+          },
+          {
+            "type": "url",
+            "id": "cartLink",
+            "label": "Cart Link"
+          },
+          {
+            "type": "text",
+            "id": "cartLabel",
+            "label": "Cart Label"
+          },
+          {
+            "type": "richtext",
+            "id": "alrtLink1",
+            "label": "Other Link",
+            "info": "Also available on amazon.com"
+          },
+          {
+            "type": "richtext",
+            "id": "alrtLink2",
+            "info": "Also available on amazon.com",
+            "label": "Othere link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product list",
+        "category": "Product",
+        "blocks": [
+          {
+            "type": "featured_product"
+          },
+          {
+            "type": "featured_product"
+          },
+          {
+            "type": "featured_product"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

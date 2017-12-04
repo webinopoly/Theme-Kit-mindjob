@@ -218,13 +218,6 @@ i {
     color: white;
     border: 0.15em solid #542579; }
 
-.buy-btn {
-  background: #FED003;
-  transition: .2s all; }
-  .buy-btn:hover {
-    background: #542579;
-    color: white;
-    border: 0.15em solid #542579; }
 
 .sold-out {
   background: #6C6C6C;
@@ -1441,13 +1434,12 @@ div#menu {
       margin: 0 0 1.5em; }
   #own-it .buy-learn {
     text-align: left; }
-    #own-it .buy-learn span.price.btn {
-      color: white;
-      background: black;
-      border-color: black; }
+
+
+
   #own-it div.deck {
     text-align: center; }
-    #own-it div.deck img {
+    #own-it div.deck img:not(.thumbImg) {
       width: 65%;
       margin: 0 auto; }
 
@@ -2090,7 +2082,8 @@ img.mfp-img {
     padding-left: 6px;
     padding-right: 6px; } }
 
-
-
-
 .buy-learn .btn.buy-btn{cursor: pointer;}
+#shopify-section-product-template #own-it .buy-learn  {
+  margin-left:-10px;
+  margin-right:-10px;
+}

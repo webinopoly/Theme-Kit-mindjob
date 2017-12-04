@@ -3,10 +3,10 @@
     "buy_btn_url": "https:\/\/www.mindjobgame.com\/cart\/202442735636:1",
     "brand_dark": "#000000",
     "light_section_header_color": "#542579",
-    "dark_section_header_color": "#FED003",
+    "dark_section_header_color": "#fed003",
     "nsfw_section_header_color": "#002855",
-    "drinking_section_header_color": "#A20000",
-    "drinking2_section_header_color": "#A20000",
+    "drinking_section_header_color": "#a20000",
+    "drinking2_section_header_color": "#a20000",
     "facebook_url": "https:\/\/www.facebook.com\/mindjob",
     "twitter_url": "https:\/\/twitter.com\/mindjob",
     "instagram_url": "https:\/\/www.instagram.com\/mindjob",
@@ -22,17 +22,13 @@
     "quotes_autoplay_speed": "10",
     "quotes_fade_speed": "2500",
     "quotes_css_transition": "linear",
-    "checkout_use_header_image": false,
     "checkout_header_image": "",
-    "checkout_logo": "MINDJOB",
     "checkout_logo_image": "shopify:\/\/shop_images\/checkout_logo.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "large",
-    "checkout_use_body_background_image": false,
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#ffffff",
     "checkout_input_background_color_mode": "white",
-    "checkout_use_sidebar_background_image": false,
     "checkout_sidebar_background_image": "",
     "checkout_sidebar_background_color": "#fafafa",
     "checkout_heading_font": "Helvetica Neue",
@@ -40,6 +36,10 @@
     "checkout_accent_color": "#bbbbbb",
     "checkout_button_color": "#f45b4f",
     "checkout_error_color": "#f45b4f",
+    "checkout_use_header_image": false,
+    "checkout_logo": "MINDJOB",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
     "section_header_size": "4.5em",
     "back_in_stock_list_id": "",
     "color_body_bg": "#ffffff",
@@ -139,7 +139,68 @@
     "share_twitter": true,
     "share_pinterest": true,
     "share_fancy": true,
-    "share_google": true
+    "share_google": true,
+    "sections": {
+      "product-template": {
+        "type": "product-template",
+        "blocks": {
+          "1510847541907": {
+            "type": "featured_product",
+            "settings": {
+              "product": "checkout",
+              "language": "US",
+              "cartLink": "",
+              "cartLabel": "",
+              "alrtLink1": "<p>Also available on <a href=\"http:\/\/www.amazon.com\/dp\/B01H67GPNK\" title=\"http:\/\/www.amazon.com\/dp\/B01H67GPNK\">amazon.com<\/a><\/p>",
+              "alrtLink2": "<p>Available in Canada on <a href=\"http:\/\/www.amazon.ca\/dp\/B01H67GPNK\" title=\"http:\/\/www.amazon.ca\/dp\/B01H67GPNK\">amazon.ca<\/a><\/p>"
+            }
+          },
+          "1510847570138": {
+            "type": "featured_product",
+            "settings": {
+              "product": "mindjob-mx",
+              "language": "mx",
+              "cartLink": "",
+              "cartLabel": "",
+              "alrtLink1": "<p>Available in Mexico on <a href=\"https:\/\/www.amazon.com.mx\/dp\/B075ZZGSGJ\" title=\"https:\/\/www.amazon.com.mx\/dp\/B075ZZGSGJ\">amazon.co.mx<\/a><\/p>",
+              "alrtLink2": ""
+            }
+          },
+          "1510847566418": {
+            "type": "featured_product",
+            "settings": {
+              "product": "mindjob-us",
+              "language": "uk",
+              "cartLink": "",
+              "cartLabel": "amazon.co.uk",
+              "alrtLink1": "<p>Available in the UK and Europe on <a href=\"http:\/\/www.amazon.co.uk\/dp\/B01N06RQ6V\" title=\"http:\/\/www.amazon.co.uk\/dp\/B01N06RQ6V\">amazon.co.uk<\/a><\/p>",
+              "alrtLink2": ""
+            }
+          },
+          "1510847548401": {
+            "type": "featured_product",
+            "settings": {
+              "product": "mindjob-de",
+              "language": "de",
+              "cartLink": "",
+              "cartLabel": "",
+              "alrtLink1": "<p>Available in Germany on <a href=\"http:\/\/www.amazon.de\/dp\/B076922XTZ\" title=\"http:\/\/www.amazon.de\/dp\/B076922XTZ\">Amazon.de<\/a><\/p>",
+              "alrtLink2": "<p>Availalbe in the UK and Europe on <a href=\"http:\/\/www.amazon.co.uk\/dp\/B076922XTZ\" title=\"http:\/\/www.amazon.co.uk\/dp\/B076922XTZ\">Amazon.co.uk<\/a><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1510847541907",
+          "1510847570138",
+          "1510847566418",
+          "1510847548401"
+        ],
+        "settings": {
+          "title": "MINDJOB"
+        }
+      }
+    },
+    "content_for_index": []
   },
   "presets": {
     "Red and black": {

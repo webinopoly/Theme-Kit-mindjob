@@ -1,8 +1,16 @@
+.clearfix:before,
+.clearfix:after {content: "";display: table;}
+.clearfix:after {clear: both;}
+.clearfix {zoom: 1; /* ie 6/7 */}
+
 .p-container {
   width: 90%;
   margin: 0 auto;
   position: relative;
-  #own-it div.deck {
+  #own-it {
+    @media only screen and (max-width: 1024px) {
+      padding-top: 0;
+    }
     .flagList:before,
     .flagList:after {content: "";display: table;}
     .flagList:after {clear: both;}
@@ -15,7 +23,6 @@
           img{height: 30px;width: auto;}
         }
     }
-  }
   .langThumbs:before,
   .langThumbs:after {content: "";display: table;}
   .langThumbs:after {clear: both;}
@@ -24,42 +31,128 @@
     display: table;
     table-layout: fixed;
     width:100%;
+    margin-bottom: 20px;
+    @media only screen and (max-width: 1400px) {
+      margin-bottom: 20px;
+    }
+    ul{
+      margin: auto;
+      padding: 0;
+      max-width: 600px;
+
+      @media only screen and (max-width: 1400px) {
+        padding:15px 0 0;
+        margin-bottom: auto;
+
+      }
+    }
     li{
       display: table-cell;
       width:1%;
       border:1px solid #cccbcb;
-      padding: 25px 10px;
+      padding: 15px 10px;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: all 0.3s linear;
+      @media only screen and (max-width: 1400px) {
+        padding: 10px 10px;
+      }
+      @media only screen and (max-width: 767px) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      &:hover,
       &.active{
-        border:1px solid #f2f2f2;
+        border:1px solid #c5d1d2;
         background-color: #c5d1d2;
       }
     }
     span{
       text-transform: uppercase;
       text-align: center;
-      margin:25px auto;
+      margin: auto;
       display: block;
       font-family: "bebas_neue_regularregular", Helevetica;
-      font-size: 40px;
+      font-size: 26px;
       font-weight: normal;
+      line-height: normal;
+      margin-top: 10px;
+      @media only screen and (max-width: 1400px) {
+        font-size: 24px;
+        margin-top: 5px;
+      }
+      @media only screen and (max-width: 1199px) {
+        font-size: 18px;
+      }
+      @media only screen and (max-width: 767px) {
+        font-size: 16px;
+      }
     }
     img.flag{
-      width: 150px;
+      width: 80px;
       max-width: 100%;
       margin: auto;
       display: block;
+      @media only screen and (max-width: 1400px) {
+        width:60px;
+      }
+      @media only screen and (max-width: 991px) {
+        width:35px;
+      }
     }
     img.pImg{
-      width:250px;
+      width: auto;
+      height: 100px;
       max-width: 100%;
       margin: auto;
       display: block;
     }
   }
+  .bullets{
+    text-align: center;
+    h3{
+      display: block;
+      text-align: center;
+    }
+    ul{
+      display: inline-block;
+      text-align:left;
+      text-align: center;
+      @media only screen and (max-width: 767px) {
+      }
+      li{
+        display: block;
+        @media only screen and (max-width: 767px) {
+        }
+        margin-bottom: 15px;
+        list-style:none;
+        position: relative;
+        &:before{
+          content: "- ";
+          display: inline-block;
+          left: -20px;
+          margin-right: 10px;
+          position: static;
+          top: 0;
+        }
+      }
+    }
+  }
+
+
+  }
   #own-it .buy-learn{
     .availableOn{
       text-align: center;
       margin-bottom: 10px;
+      p{
+        margin-bottom: 10px;
+      }
       &:first-of-type{
         margin-top: 30px;
       }
@@ -71,5 +164,219 @@
 
   .p-container .buy-learn .btn.buy-btn.active{
     background-color: #f00;
+  }
+  .text-center{text-align: center;}
+}
+section .row.productTab-row{
+  overflow: hidden;
+  @media only screen and (max-width: 991px) {
+    display: block;
+  }
+}
+#productPhoto{
+  overflow: hidden;
+  @media only screen and (min-width: 992px) {
+    width: 60%;
+    float: left;
+  }
+  #productPhotoSlider{
+    margin: auto;
+    padding: 0;
+    li{
+      margin: auto;
+      padding: 0;
+      float: left;
+    //  &.hide{display: none;}
+      .thumbImg{
+        max-width: 100%;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        height: auto;
+        max-height: 350px;
+        @media only screen and (max-width: 1400px) {
+          max-height: 280px;
+        }
+      }
+    }
+  }
+  .slider-nav {
+    position: absolute;
+    top: 41%;
+    width: 100%;
+    display: block;
+    text-align: center;
+    display: none;
+    .productTab-row.active &{
+      display: block;
+    }
+  }
+  .sliderWrap{
+    position: relative;
+  }
+  i {
+    padding: 10px;
+    font-size: 2.5em;
+    cursor: pointer;
+    color: #FED003;
+    transition: all .2s;
+    position: absolute;
+
+    position: absolute;
+    top: 41%;
+    display: block;
+    text-align: center;
+    z-index: 9;
+    border-style: solid;
+    border:0 none;
+    padding: 0;
+    &:first-of-type {
+      left: -30px;
+      @media only screen and (max-width: 767px) {
+        left: -15px;
+      }
+      &:after{
+        content: "";
+        border-style: solid;
+        border-color: rgba(220, 220, 220, 0);
+        border-right-color: #9f9f9f;
+        border-width: 30px;
+        margin-top:0px;
+        display: block;
+        @media only screen and (max-width: 767px) {
+          border-width: 15px;
+        }
+      }
+    }
+    &:last-of-type {
+      right: -30px;
+      @media only screen and (max-width: 767px) {
+        right: -15px;
+      }
+      &:after{
+        content: "";
+        border-style: solid;
+        border-color: rgba(220, 220, 220, 0);
+      	border-left-color: #9f9f9f;
+      	border-width: 30px;
+      	margin-top: 0px;
+        display: block;
+        @media only screen and (max-width: 767px) {
+          border-width: 15px;
+        }
+      }
+    }
+    &:hover {
+      opacity: 0.5;
+      // -webkit-transform: scale(1.1);
+      // -ms-transform: scale(1.1);
+      // transform: scale(1.1);
+    }
+  }
+  .quantityBtn{
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#shopify-section-product-template #own-it .buy-learn{
+  span.price.btn{
+  }
+  .quantityBtn{
+    float: left;
+    width: calc(33.33% - 10px);
+    margin: auto 5px;
+    padding: 0 0 0 25px;
+    height: 44px;
+    label{
+      line-height: 40px;
+      margin: auto;
+    }
+    #Quantity {
+      display: inline-block;
+      min-width: 10px;
+      width: auto;
+      float: none;
+      display: inline-block;
+      width: 35px;
+      padding: 7px 0px;
+      text-align: left;
+      background-color: #000;
+      color:#fff;
+      font-size: inherit;
+      border:0 none;
+      font-family: "bebas_neue_regularregular", Helevetica;
+      letter-spacing: 1.34px;
+    }
+  }
+  .btn {
+    float: left;
+    color: white;
+    background: black;
+    border-color: black;
+    width: 100%;
+    margin: auto;
+    min-width: 10px;
+    box-sizing: border-box;
+    float:none;
+    line-height: 20px;
+    min-width: 10px;
+    margin: auto 5px;
+    float: left;
+    width: calc(33.33% - 10px);
+    @media only screen and (max-width: 991px) {
+      width: calc(50% - 10px);
+      height: 44px;
+    }
+    &.product-form__input{
+      float: none;
+      margin: auto;
+      width: 100%;
+    }
+
+    &.buy-btn {
+      background: #FED003;
+      border: 0.15em solid #FED003;
+      transition: .2s all;
+      color: #000;
+      @media only screen and (max-width: 991px) {
+        width: calc(100% - 10px);
+        margin-top: 15px;
+      }
+      &:hover {
+        background: #542579;
+        color: white;
+        border: 0.15em solid #542579;
+      }
+    }
+  }
+}
+
+.btn.btnHome{
+  background: #542579;
+  color: white;
+  border: 0.15em solid #542579;
+}
+#shopify-section-product-template section .row.productTab-row{width:auto;padding-bottom: 0;margin-bottom: auto;
+  @media only screen and (max-width: 767px) {
+    overflow: visible;
+  }
+}
+#shopify-section-product-template section .row.midjob{
+  display: block;
+  width: auto;
+  @media only screen and (max-width: 1199px) {
   }
 }

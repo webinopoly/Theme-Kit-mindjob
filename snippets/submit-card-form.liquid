@@ -2,8 +2,22 @@
 	<input type="text" name="name" id="name" placeholder="Title">
 	<textarea id="rule" placeholder="Rule"></textarea>
 	<input type="hidden" name="email" id="email" placeholder="Your Email" Value="email@example.com">
-	<div class="g-recaptcha" data-sitekey="6LfzbScTAAAAAA­-ZvbXwfMFdKeAnUgV1TzU3NGq4"></div>
 	<input class="btn" id="send" type="submit" value="submit">
+
+
+	<div class="panel-body">
+	<script type="text/javascript"
+	src="https://www.google.com/recaptcha/api/challenge?k=6LfzbScTAAAAAA-ZvbXwfMFdKeAnUgV1TzU3NGq4">
+	</script>
+
+	<noscript>
+	<iframe src="https://www.google.com/recaptcha/api/noscript?k=6LfzbScTAAAAAA-ZvbXwfMFdKeAnUgV1TzU3NGq4"
+	height="300" width="500" frameborder="0"></iframe>
+	<br>
+	<textarea name="recaptcha_challenge_field" rows="3" cols="40">
+	</textarea>
+	<input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+	</noscript>
+	</div>
+	
 </form>
-
-
